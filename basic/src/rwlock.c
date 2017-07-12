@@ -44,9 +44,13 @@ int main()
 		pthread_create(&t2[i], NULL, func_write, NULL);
 	}
 
-	for(i = 0; i < 5; ++i)
+	for(i = 0; i < READ_THREAD_COUNT; ++i)
 	{
 		pthread_join(t1[i], NULL);
+	}
+
+	for(i = 0; i < WRITE_THREAD_COUNT; ++i)
+	{
 		pthread_join(t2[i], NULL);
 	}
 }
